@@ -18,42 +18,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script type="text/javascript">
-    $(function(){
-      $.ajax({
-        url: "{% url 'reclama_datos' %}",
-        type: "get",
-        success: function(datos){
-          Visualiza_datos(datos);
-        },
-        failure: function(datos){
-          alert('No se pueden visualizar los datos');
-        }
-      });
-
-      function Visualiza_datos(datos){
-        $('#container').highcharts({
-          chart: { type: 'bar', animation:'true' },
-          title: { text: 'Visitas de las tiendas' },
-          xAxis: { categories: datos[0] },
-            //xAxis: {categories: ["Almendro", "mariapilar bar", "Ecu", "Conchita", "Entre ascuas", "Casa Blanca"]},
-            yAxis: {
-              title:{
-                text:'Visitas'
-              }
-            },
-            series: [{
-              data: datos[1],
-              name:"numero de visitas",
-                //data : [74, 20, 9, 6, 3, 2]
-              }],
-            });
-      };
-    });
-
     </script>
     <script type="text/javascript" src="{% static 'js/cambiar_text.js' %}"></script>
   </head>
