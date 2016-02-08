@@ -1,0 +1,27 @@
+{% extends "tiendas/base.html" %}
+{% block body_block %}
+{% if zona %}
+
+
+        <form role="form"  id="tienda_form" method="post" action="/tiendas/add_tienda/{{zona.slug}}/" enctype="multipart/form-data">
+            <h2 class="form-signin-heading">Añade tienda a <a href="/tiendas/mostrartiendas/{{zona.slug}}/"> {{ zona.nombre }}</a></h2>
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                <br>{{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+
+
+            <br/>
+            <button class="btn btn-primary" type="submit" name="submit">Añadir tienda</button>
+        </form>
+        {% else %}
+        <p>Esta zona no existe.</p>
+        {%  endif %}
+{% endblock %}
+

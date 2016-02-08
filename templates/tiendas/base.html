@@ -1,0 +1,101 @@
+  <!DOCTYPE html>
+  {% load staticfiles %}
+  <html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <title>Tienda - {% block title %}Tu tienda online!{% endblock %}</title>
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript">
+    $(function(){
+      $.ajax({
+        url: "{% url 'reclama_datos' %}",
+        type: "get",
+        success: function(datos){
+          Visualiza_datos(datos);
+        },
+        failure: function(datos){
+          alert('No se pueden visualizar los datos');
+        }
+      });
+
+      function Visualiza_datos(datos){
+        $('#container').highcharts({
+          chart: { type: 'bar', animation:'true' },
+          title: { text: 'Visitas de las tiendas' },
+          xAxis: { categories: datos[0] },
+            //xAxis: {categories: ["Almendro", "mariapilar bar", "Ecu", "Conchita", "Entre ascuas", "Casa Blanca"]},
+            yAxis: {
+              title:{
+                text:'Visitas'
+              }
+            },
+            series: [{
+              data: datos[1],
+              name:"numero de visitas",
+                //data : [74, 20, 9, 6, 3, 2]
+              }],
+            });
+      };
+    });
+
+    </script>
+    <script type="text/javascript" src="{% static 'js/cambiar_text.js' %}"></script>
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <ul class="nav navbar-nav navbar-right">
+
+            <li><a href="{% url 'index' %}">Home</a></li>
+            {% if user.is_authenticated %}
+
+            <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
+            <!--<li><a href="{#% url 'auth_logout' %#}?next=/restaurante/">Logout</a></li>-->
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <li><a href="{% url 'add_zona' %}">Añade una zona nueva</a></li>
+            <!--<li><a href="{#% url 'add_tapa' %#}">Add a New Tapa</a></li>-->
+            {% else %}
+            <li><a href="{% url 'register' %}">Register Here</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+            <li><a href="#">About</a></li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          {% block side_block %}
+
+          <div id="botones">
+            <div class="boton" id="aumentar">Texto Grande</div>
+            <div class="boton">Texto Normal</div>
+            <div class="boton" id="disminuir">Texto Chico</div>
+          </div>
+          {% endblock %}
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+         <div>
+          {% block body_block %}{% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  </body>
+  </html>

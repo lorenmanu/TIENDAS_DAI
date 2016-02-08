@@ -1,0 +1,34 @@
+- hosts: localhost
+  remote_user: ubuntu
+  sudo: true
+  tasks:
+  - name: Actualizar sistema
+    apt: update_cache=yes upgrade=dist
+  - name: Instalar python-setuptools
+    apt: name=python-setuptools state=present
+  - name: Instalar build-essential
+    apt: name=build-essential state=present
+  - name: Instalar pip
+    apt: name=python-pip state=present
+  - name: Instalar git
+    apt: name=git state=present
+  - name: Ins Pyp
+    apt: pkg=python-pip state=present
+  - name: Instalar python-dev
+    apt: pkg=python-dev state=present
+  - name: Instalar libpq-dev
+    apt: pkg=libpq-dev state=present
+  - name: Instalar python-psycopg2
+    apt: pkg=python-psycopg2 state=present
+  - name: Obtener aplicacion de git
+    git: repo=https://github.com/lorenmanu/Tiendas.git  dest=/home/ubuntu/Tiendas clone=yes force=yes
+  - name: Permisos de ejecucion
+    command: chmod -R +x Tiendas
+  - name: Instalar libreria para pillow
+    command: sudo apt-get -y build-dep python-imaging --fix-missing
+  - name: Instalar pillow
+    command: sudo easy_install Pillow
+  - name: Instalar requisitos
+    command: sudo pip install -r Tiendas/requirements.txt
+  - name: ejecutar
+    command: nohup sudo python Tiendas/manage.py runserver 0.0.0.0:80
