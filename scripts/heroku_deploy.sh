@@ -10,5 +10,5 @@ sudo git push heroku master
 sudo heroku run python manage.py syncdb --noinput
 sudo heroku ps:scale web=1
 #renombrada con este nombre para no machacar la que ya tengo funcionando
-sudo heroku apps:rename ejemplodeploy
+sudo heroku apps:rename tiendas
 sudo heroku open
