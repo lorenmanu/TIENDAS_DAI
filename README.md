@@ -2,7 +2,7 @@
 
 [![Build Status](https://snap-ci.com/lorenmanu/Tiendas/branch/master/build_image)](https://snap-ci.com/lorenmanu/Tiendas/branch/master)
 
-[![Heroku](https://www.herokucdn.com/deploy/button.png)](https://ejemplodeploy.herokuapp.com/tiendas/login/?next=/tiendas/)
+[![Heroku](https://tiendas.herokuapp.com/tiendas/login/)
 
 [![EC2](https://www.dropbox.com/s/st4etj28pyu11lb/aws-ec2_logo_small.jpg?dl=1)](http://ec2-52-36-13-0.us-west-2.compute.amazonaws.com/tiendas/)
 
