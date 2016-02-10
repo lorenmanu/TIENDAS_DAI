@@ -2,7 +2,7 @@
 
 [![Build Status](https://snap-ci.com/lorenmanu/Tiendas_Dai/branch/master/build_image)](https://snap-ci.com/lorenmanu/Tiendas_Dai/branch/master)
 
-[![Heroku](https://www.herokucdn.com/deploy/button.png)](https://Tiendas_Dai.herokuapp.com/Tiendas_Dai/login/)
+[![Heroku](https://www.herokucdn.com/deploy/button.png)](https://tiendas.herokuapp.com/tiendas/login/?next=/tiendas/)
 
 [![EC2](https://www.dropbox.com/s/st4etj28pyu11lb/aws-ec2_logo_small.jpg?dl=1)](http://ec2-52-36-13-0.us-west-2.compute.amazonaws.com/Tiendas_Dai/)
 
@@ -98,7 +98,7 @@ Los tests que se ejecutarán son los mencionados en el apartado **Testeo de la a
 
 Aquí he decidido usar Heroku, el cual se caracteriza por su fácil sincronización con github y por su caracter gratuito.
 
-Podemos ver la aplicación desplegada en el siguiente [enlace](http://ec2-52-34-212-176.us-west-2.compute.amazonaws.com/Tiendas_Dai/login/?next=/Tiendas_Dai/).
+Podemos ver la aplicación desplegada en el siguiente [enlace](https://www.herokucdn.com/deploy/button.png)](https://tiendas.herokuapp.com/tiendas/login/?next=/tiendas/).
 
 He proporcionado un archivo(script) para el despliegue en heroku, puede verse [aquí](https://github.com/lorenmanu/Tiendas_Dai/blob/master/scripts/heroku_deploy.sh).
 
@@ -111,14 +111,14 @@ Para la creación del entorno Docker en mi máquina virtual ec2 he usado un arch
 
 Para crear una instancia en **ec2**, he seguido los pasos detallados en el siguiente [archivo](https://github.com/lorenmanu/Tiendas_Dai/blob/master/documentacion/ec2.md).
 
-El enlace mi instancia en EC2 donde se puede ver la aplicación es [este](http://ec2-52-36-13-0.us-west-2.compute.amazonaws.com/Tiendas_Dai/).
+El enlace mi instancia en EC2 donde se puede ver la aplicación es [este](http://ec2-52-36-13-0.us-west-2.compute.amazonaws.com/tiendas/).
 
 ### Docker Hub
 Docker Hub es un servicio en la nube que nos permite construir y enviar aplicaciones o servicios mediante contenedores. Y además nos permitirá también su automatización.
 
 Para su automatización será necesario un archivo Dockerfile, el mio puede verse [aquí](https://github.com/lorenmanu/Tiendas_Dai/blob/master/Dockerfile).
 
-La imagen del docker se puede ver [aquí](https://hub.docker.com/r/lorenmanu/Tiendas_Dai/).
+La imagen del docker se puede ver [aquí](https://hub.docker.com/r/lorenmanu/Tiendas/).
 
 Los pasos de como usar **Docker Hub** se detallan en el siguiente [archivo](https://github.com/lorenmanu/Tiendas_Dai/blob/master/documentacion/docker.md).
 
@@ -135,4 +135,4 @@ sudo python manage.py runserver 0.0.0.0:80
 
 He probado como **IAAS** en el despligue de la aplicación **EC2**. También la he desplegado usando **FABRIC** o manualmente(es decir, sin usar herramientas de automatización), como se puede ver anteriormente. En este caso para el despliegue uso **Vagrant** y **Asinble**. Para más información de como se ha realizado se puede consultar el siguiente [archivo](https://github.com/lorenmanu/Tiendas_Dai/blob/master/documentacion/ec2_vagrant.md).
 
-El enlace de mi aplicación desplegada se puede ver [aquí](http://ec2-52-36-13-0.us-west-2.compute.amazonaws.com/Tiendas_Dai/).
+El enlace de mi aplicación desplegada se puede ver [aquí](http://ec2-52-36-13-0.us-west-2.compute.amazonaws.com/tiendas/).
